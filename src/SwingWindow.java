@@ -3,6 +3,7 @@ import java.awt.*;
 
 public class SwingWindow extends JFrame{
     private JPanel mainPanel;
+    private MouseClick click;
     private Player p;
     public SwingWindow()
     {
@@ -12,11 +13,20 @@ public class SwingWindow extends JFrame{
         setLocation(300,50);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setVisible(true);
-        p = new Player();
+        p = new Player(click);
+        click = new MouseClick();
+        addMouseListener(click);
+        repaint();
     }
 
-    public void paintComponent()
+    public void paint(Graphics g)
     {
-
+        Graphics2D graphic = (Graphics2D)g;
+        super.paint(g);
+        if (p != null)
+        {
+            p.draw(graphic);
+        }
     }
+
 }
