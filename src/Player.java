@@ -1,24 +1,27 @@
 import javax.imageio.ImageIO;
 import java.awt.*;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
 
-public class Player implements KeyListener  {
+public class Player{
     private int x;
     private int y;
+    private int h;
+    private int w;
+    private KeyDetector k;
     private BufferedImage sprite;
     private BufferedImage shoot;
 
-    private MouseClick click;
 
-    public Player(MouseClick main) {
-        x = 0;
-        y = 0;
-        click = main;
+    public Player(KeyDetector k) {
+        x = 100;
+        y = 100;
+        h = 50;
+        w = 50;
+        this.k = k;
+
         try {
             sprite = ImageIO.read(new File("Sprites/temp.png"));
         } catch (IOException e) {
@@ -36,27 +39,12 @@ public class Player implements KeyListener  {
     }
     public void draw(Graphics g)
     {
-        g.drawImage(sprite,100,100,100, 100, null);
-        if (click != null && click.isShoot())
+        g.drawImage(sprite, x, y,w, h, null);
+        if (k.j)
         {
-            g.drawImage(sprite,300,300,100, 100, null);
+            g.drawImage(sprite, x, y + 10, w, y, null);
+
         }
-    }
-
-
-    @Override
-    public void keyTyped(KeyEvent e) {
-
-    }
-
-    @Override
-    public void keyPressed(KeyEvent e) {
-
-    }
-
-    @Override
-    public void keyReleased(KeyEvent e) {
-
     }
 
 
