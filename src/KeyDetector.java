@@ -2,9 +2,9 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 public class KeyDetector implements KeyListener {
-    public boolean j;
+    public boolean jump;
     public KeyDetector() {
-        j = false;
+        jump = false;
     }
 
     @Override
@@ -16,7 +16,7 @@ public class KeyDetector implements KeyListener {
     public void keyPressed(KeyEvent e) {
         if (e.getKeyCode() == KeyEvent.VK_SPACE)
         {
-            j = true;
+            jump = true;
         }
     }
 

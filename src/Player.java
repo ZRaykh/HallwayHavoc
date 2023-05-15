@@ -10,17 +10,17 @@ public class Player{
     private int y;
     private int h;
     private int w;
-    private KeyDetector k;
+    private KeyDetector input;
     private BufferedImage sprite;
     private BufferedImage shoot;
 
 
-    public Player(KeyDetector k) {
-        x = 100;
-        y = 100;
+    public Player(KeyDetector in) {
+        x = 800;
+        y = 800;
         h = 50;
         w = 50;
-        this.k = k;
+        input = in;
 
         try {
             sprite = ImageIO.read(new File("Sprites/temp.png"));
@@ -37,13 +37,14 @@ public class Player{
     public BufferedImage getSprite() {
         return sprite;
     }
+
     public void draw(Graphics g)
     {
         g.drawImage(sprite, x, y,w, h, null);
-        if (k.j)
+        if (input.jump)
         {
             g.drawImage(sprite, x, y + 10, w, y, null);
-
+            input.jump = false;
         }
     }
 
