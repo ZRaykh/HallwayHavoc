@@ -9,7 +9,12 @@ public class Background
     private ScreenStats screen;
     private BufferedImage front;
     private BufferedImage back;
-    private int x;
+    private BufferedImage backGroundA1;
+    private BufferedImage backGroundA2;
+    private BufferedImage backGroundA3;
+    private BufferedImage backGroundA4;
+
+    private int pos1;
     private int frontY;
     private int backY;
     private int width;
@@ -17,41 +22,37 @@ public class Background
     public Background()
     {
         screen = new ScreenStats();
-        x = 0;
+        pos1 = 0;
         frontY = screen.getLENGTH()- screen.getLENGTH()/4;
         backY = 0;
         width = screen.getWIDTH();
         try {
             front = ImageIO.read(new File("Sprites/TestBackground.jpg"));
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-        try {
             back = ImageIO.read(new File("Sprites/2x1-rectangle.png"));
+            backGroundA1 = ImageIO.read(new File("Sprites/BackgroundTestNew.png"));
+            backGroundA2 = ImageIO.read(new File("Sprites/BackgroundTestNew.png"));
+            backGroundA3 = ImageIO.read(new File("Sprites/BackgroundTestNew.png"));
+            backGroundA4 = ImageIO.read(new File("Sprites/BackgroundTestNew.png"));
+
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }
 
-    public void draw(Graphics g)
-    {
-        g.drawImage(front, x, frontY, width, screen.getLENGTH() - frontY, null);
-        g.drawImage(back, x, backY, width, frontY, null);
-    }
 
-    public void updateBackground(Graphics g)
+    public void drawBackground(Graphics g)
     {
-        while (true)
+        int pos2 = pos1 + screen.getWIDTH()/3 + 1;
+        int pos3 = pos2 + screen.getWIDTH()/3 + 1;
+        int pos4 = pos3 + screen.getWIDTH()/3 + 1;
+        g.drawImage(backGroundA1, pos1, frontY, 660, 400, null);
+        g.drawImage(backGroundA2, pos2, frontY, 660, 400, null);
+        g.drawImage(backGroundA3, pos3, frontY, 660, 400, null);
+        g.drawImage(backGroundA4, pos4, frontY, 660, 400, null);
+        pos1 -= 5;
+        if(pos1 <= -660)
         {
-            draw(g);
-            if (x < 420)
-            {
-                x += 5;
-            }
-            else
-            {
-                x = 0;
-            }
+            pos1 = 0;
         }
     }
 }

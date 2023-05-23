@@ -7,6 +7,8 @@ public class SwingWindow extends JFrame implements Runnable{
     private Player player;
     private Background background;
     private ScreenStats screen;
+    private Thread gameThread;
+
 
     public SwingWindow()
     {
@@ -25,31 +27,42 @@ public class SwingWindow extends JFrame implements Runnable{
         this.setFocusable(true);
 
     }
+    public void startGameThread()
+    {
+        gameThread = new Thread(this);
+        gameThread.start();
+    }
 
     @Override
     public void run() {
-        mainPanel.repaint();
-    }
-    /*public void paint(Graphics g)
-    {
-        Graphics2D graphic = (Graphics2D)g;
-        super.paint(g);
+        double drawInterval = 1000000000/60;
+        double nextDrawTime = System.nanoTime() + drawInterval;
+        while (gameThread != null)
+        {
+            repaint();
+            try
+            {
+                double remainingTime = nextDrawTime - System.nanoTime();
+                remainingTime /= 1000000;
+                if(remainingTime < 0)
+                {
+                    remainingTime = 0;
+                }
 
-        Thread bgUpdate = new Thread(() -> {
-        while (true) background.updateBackground(g);
-    });
-        bgUpdate.run();
-        Thread playerUpdate = new Thread(() -> {
-            while (true)  player.draw(graphic);
-        });
-        playerUpdate.run();
+                Thread.sleep((long) remainingTime);
+                nextDrawTime += drawInterval;
+
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
     }
-*/
+
     public void paint(Graphics g)
     {
         Graphics2D graphic = (Graphics2D)g;
         super.paint(g);
-        background.updateBackground(g);
+        background.drawBackground(g);
         player.draw(graphic);
     }
 
