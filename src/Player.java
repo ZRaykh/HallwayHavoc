@@ -27,25 +27,18 @@ public class Player{
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        try {
-            shoot = ImageIO.read(new File("Sprites/ball.png"));
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
     }
 
     public BufferedImage getSprite() {
         return sprite;
     }
 
-    public void draw(Graphics g)
-    {
-        g.drawImage(sprite, x, y,w, h, null);
-        if (input.jump)
+    public void draw(Graphics g){
+        if (input.isJump())
         {
-            g.drawImage(sprite, x, y + 10, w, y, null);
-            input.jump = false;
+            g.drawImage(sprite, x, y - 100, w, h, null);
         }
+        else g.drawImage(sprite, x, y,w, h, null);
     }
 
 

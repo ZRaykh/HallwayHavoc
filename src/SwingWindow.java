@@ -1,7 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
 
-public class SwingWindow extends JFrame implements Runnable{
+public class SwingWindow extends JPanel implements Runnable{
     private JPanel mainPanel;
     private KeyDetector input;
     private Player player;
@@ -17,14 +17,10 @@ public class SwingWindow extends JFrame implements Runnable{
         this.addKeyListener(input);
         player = new Player(input);
         background = new Background();
-        setContentPane(mainPanel);
-        setTitle("HALL WAY HAVOC");
-        setSize(screen.getWIDTH(), screen.getLENGTH());
-        setLocation(0,0);
-        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        setVisible(true);
+        this.setPreferredSize(new Dimension(screen.getWIDTH(), screen.getLENGTH()));
         this.setFocusable(true);
-        this.setFocusable(true);
+        this.setDoubleBuffered(true);
+        startGameThread();
 
     }
     public void startGameThread()
@@ -35,8 +31,9 @@ public class SwingWindow extends JFrame implements Runnable{
 
     @Override
     public void run() {
-        double drawInterval = 1000000000/60;
+        double drawInterval = 1000000000/120;
         double nextDrawTime = System.nanoTime() + drawInterval;
+
         while (gameThread != null)
         {
             repaint();
@@ -49,8 +46,8 @@ public class SwingWindow extends JFrame implements Runnable{
                     remainingTime = 0;
                 }
 
-                Thread.sleep((long) remainingTime);
                 nextDrawTime += drawInterval;
+                Thread.sleep((long) remainingTime);
 
             } catch (InterruptedException e) {
                 e.printStackTrace();
@@ -58,10 +55,11 @@ public class SwingWindow extends JFrame implements Runnable{
         }
     }
 
+
     public void paint(Graphics g)
     {
-        Graphics2D graphic = (Graphics2D)g;
         super.paint(g);
+        Graphics2D graphic = (Graphics2D)g;
         background.drawBackground(g);
         player.draw(graphic);
     }

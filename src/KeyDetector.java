@@ -1,10 +1,14 @@
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
 public class KeyDetector implements KeyListener {
-    public boolean jump;
+    private static boolean jump;
     public KeyDetector() {
         jump = false;
+
     }
 
     @Override
@@ -17,11 +21,21 @@ public class KeyDetector implements KeyListener {
         if (e.getKeyCode() == KeyEvent.VK_SPACE)
         {
             jump = true;
+            ScheduledExecutorService executorService = Executors.newSingleThreadScheduledExecutor();
+            executorService.schedule(KeyDetector::unJump, 250, TimeUnit.MILLISECONDS);
         }
     }
 
     @Override
     public void keyReleased(KeyEvent e) {
-
     }
+
+    public boolean isJump() {
+        return jump;
+    }
+
+    public static void unJump() {
+        jump = false;
+    }
+
 }
