@@ -6,52 +6,39 @@ public class SwingWindow extends JPanel implements Runnable{
     private KeyDetector input;
     private Player player;
     private Background background;
+    private Obstacles obstacles;
     private ScreenStats screen;
-    private Thread gameThread;
+    private Thread game;
+
 
 
     public SwingWindow()
     {
+        int ShiftDist = 30;
         screen = new ScreenStats();
         input = new KeyDetector();
         this.addKeyListener(input);
         player = new Player(input);
-        background = new Background();
-        this.setPreferredSize(new Dimension(screen.getWIDTH(), screen.getLENGTH()));
+        background = new Background(ShiftDist);
+        obstacles = new Obstacles(ShiftDist);
         this.setFocusable(true);
+        this.setPreferredSize(new Dimension(screen.getWIDTH(), screen.getLENGTH()));
         this.setDoubleBuffered(true);
-        startGameThread();
+        startThread();
 
     }
-    public void startGameThread()
+    public void startThread()
     {
-        gameThread = new Thread(this);
-        gameThread.start();
+        game = new Thread(this);
+        game.start();
     }
 
     @Override
     public void run() {
-        double drawInterval = 1000000000/120;
-        double nextDrawTime = System.nanoTime() + drawInterval;
 
-        while (gameThread != null)
+        while (game != null)
         {
             repaint();
-            try
-            {
-                double remainingTime = nextDrawTime - System.nanoTime();
-                remainingTime /= 1000000;
-                if(remainingTime < 0)
-                {
-                    remainingTime = 0;
-                }
-
-                nextDrawTime += drawInterval;
-                Thread.sleep((long) remainingTime);
-
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
         }
     }
 

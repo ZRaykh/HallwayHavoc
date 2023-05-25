@@ -4,23 +4,23 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
+
 public class Background
 {
+    private final int SHIFTFDIST;
     private ScreenStats screen;
     private BufferedImage backGroundA;
 
     private int pos1;
     private int frontY;
-    private int backY;
-    private int width;
 
-    public Background()
+
+    public Background(int shift)
     {
         screen = new ScreenStats();
         pos1 = 0;
         frontY = screen.getLENGTH()- screen.getLENGTH()/4;
-        backY = 0;
-        width = screen.getWIDTH();
+        SHIFTFDIST = shift;
         try {
             backGroundA = ImageIO.read(new File("Sprites/BackgroundTestNew.png"));
 
@@ -39,7 +39,7 @@ public class Background
         g.drawImage(backGroundA, pos2, frontY, 660, 400, null);
         g.drawImage(backGroundA, pos3, frontY, 660, 400, null);
         g.drawImage(backGroundA, pos4, frontY, 660, 400, null);
-        pos1 -= 10;
+        pos1 -= SHIFTFDIST;
         if(pos1 <= -650)
         {
             pos1 = 0;

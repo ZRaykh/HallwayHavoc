@@ -1,7 +1,6 @@
 import java.awt.*;
 
 public class ScreenStats {
-    private Dimension screen;
     private final int WIDTH ;
     private final int LENGTH;
 
