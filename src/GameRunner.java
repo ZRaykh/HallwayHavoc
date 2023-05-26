@@ -8,6 +8,7 @@ public class GameRunner extends JFrame {
         add(game);
         pack();
         setLocationRelativeTo(null);
+        setExtendedState(JFrame.MAXIMIZED_BOTH);
         setVisible(true);
     }
 }

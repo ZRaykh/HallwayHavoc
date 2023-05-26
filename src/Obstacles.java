@@ -22,8 +22,7 @@ public class Obstacles {
     {
         for (int i = 0; i < entities.length; i++)
         {
-            spacing = 500 + ((int)(Math.random() * 6) * 200);
-            System.out.println(spacing);
+            spacing = 250 + ((int) (Math.random() * 10) * 150);
             if (entities[i].getX() <= -entities[i].getW())
             {
                 entities[i].toggleInactive();

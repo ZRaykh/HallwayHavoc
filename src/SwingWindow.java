@@ -14,7 +14,7 @@ public class SwingWindow extends JPanel implements Runnable{
 
     public SwingWindow()
     {
-        int ShiftDist = 15;
+        int ShiftDist = 10;
         screen = new ScreenStats();
         input = new KeyDetector();
         this.addKeyListener(input);
@@ -39,6 +39,11 @@ public class SwingWindow extends JPanel implements Runnable{
         while (game != null)
         {
             repaint();
+            try {
+                game.sleep(10);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
         }
     }
 

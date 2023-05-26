@@ -23,8 +23,8 @@ public class ObstacleEntity {
         screen = new ScreenStats();
         x = 9999;
         y = 800;
-        w = 100;
-        h = 100;
+        w = 50;
+        h = 50;
         SHIFTDIST = shift;
         active = false;
         try {

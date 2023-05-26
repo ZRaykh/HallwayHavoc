@@ -35,12 +35,12 @@ public class Background
         int pos2 = pos1 + screen.getWIDTH()/3;
         int pos3 = pos2 + screen.getWIDTH()/3;
         int pos4 = pos3 + screen.getWIDTH()/3;
-        g.drawImage(backGroundA, pos1, frontY, 660, 400, null);
-        g.drawImage(backGroundA, pos2, frontY, 660, 400, null);
-        g.drawImage(backGroundA, pos3, frontY, 660, 400, null);
-        g.drawImage(backGroundA, pos4, frontY, 660, 400, null);
+        g.drawImage(backGroundA, pos1, frontY, screen.getWIDTH()/3, 400, null);
+        g.drawImage(backGroundA, pos2, frontY, screen.getWIDTH()/3, 400, null);
+        g.drawImage(backGroundA, pos3, frontY, screen.getWIDTH()/3, 400, null);
+        g.drawImage(backGroundA, pos4, frontY, screen.getWIDTH()/3, 400, null);
         pos1 -= SHIFTFDIST;
-        if(pos1 <= -660)
+        if(pos1 <= -screen.getWIDTH()/3)
         {
             pos1 = 0;
         }
