@@ -40,7 +40,7 @@ public class Background
         g.drawImage(backGroundA, pos3, frontY, 660, 400, null);
         g.drawImage(backGroundA, pos4, frontY, 660, 400, null);
         pos1 -= SHIFTFDIST;
-        if(pos1 <= -650)
+        if(pos1 <= -660)
         {
             pos1 = 0;
         }

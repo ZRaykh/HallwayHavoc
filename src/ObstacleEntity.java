@@ -1,5 +1,3 @@
-import com.sun.source.tree.PackageTree;
-
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -8,7 +6,7 @@ import java.io.IOException;
 
 public class ObstacleEntity {
     private final int SHIFTDIST;
-    private boolean acivated;
+    private boolean active;
     private int x;
     private int y;
     private int w;
@@ -25,14 +23,14 @@ public class ObstacleEntity {
         screen = new ScreenStats();
         x = 9999;
         y = 800;
-        w = 50;
-        h = 50;
+        w = 100;
+        h = 100;
         SHIFTDIST = shift;
-        acivated = false;
+        active = false;
         try {
             spriteA = ImageIO.read(new File("Sprites/Green.png"));
-            spriteB = ImageIO.read(new File("Sprites/Orange.png"));
-            spriteC = ImageIO.read(new File("Sprites/Purple.png"));
+            spriteB = ImageIO.read(new File("Sprites/Orange.jpg"));
+            spriteC = ImageIO.read(new File("Sprites/Purple.jpg"));
             spriteD = ImageIO.read(new File("Sprites/Red.png"));
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -40,17 +38,49 @@ public class ObstacleEntity {
         currentSprite = spriteA;
     }
 
-    public void toggleSprite()
+    public void toggleActive(int spacing)
     {
-        acivated = !acivated;
-        if (acivated == true)
+        active = true;
+        int spriteVer = (int) (Math.random() * 4);
+        if (spriteVer == 0)
         {
-            int spriteNum = (int) (Math.random() * 4);
+            currentSprite = spriteA;
         }
+        if (spriteVer == 1)
+        {
+            currentSprite = spriteB;
+        }
+        if (spriteVer == 2)
+        {
+            currentSprite = spriteC;
+        }
+        if (spriteVer == 3)
+        {
+            currentSprite = spriteD;
+        }
+        x = screen.getWIDTH() + spacing;
+    }
+
+    public void toggleInactive()
+    {
+        active = false;
+        x = 9999;
     }
     public void drawObstacle(Graphics g)
     {
         g.drawImage(currentSprite, x, y, w, h, null);
         x -= SHIFTDIST;
+    }
+
+    public int getX() {
+        return x;
+    }
+
+    public int getW() {
+        return w;
+    }
+
+    public boolean isActive() {
+        return active;
     }
 }
