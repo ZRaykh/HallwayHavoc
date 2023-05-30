@@ -14,7 +14,7 @@ public class SwingWindow extends JPanel implements Runnable{
 
     public SwingWindow()
     {
-        int ShiftDist = 15;
+        int ShiftDist = 10;
         screen = new ScreenStats();
         input = new KeyDetector();
         this.addKeyListener(input);
