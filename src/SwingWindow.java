@@ -7,25 +7,26 @@ public class SwingWindow extends JPanel implements Runnable{
     private Player player;
     private Background background;
     private Obstacles obstacles;
+    private Collisons collison;
     private ScreenStats screen;
     private Thread game;
-
-
+    private boolean playing;
 
     public SwingWindow()
     {
-        int ShiftDist = 10;
+        int ShiftDist = 15;
         screen = new ScreenStats();
         input = new KeyDetector();
         this.addKeyListener(input);
         player = new Player(input);
         background = new Background(ShiftDist);
         obstacles = new Obstacles(ShiftDist);
+        collison = new Collisons(player, obstacles);
+        playing = true;
         this.setFocusable(true);
         this.setPreferredSize(new Dimension(screen.getWIDTH(), screen.getLENGTH()));
         this.setDoubleBuffered(true);
         startThread();
-
     }
     public void startThread()
     {
@@ -35,14 +36,17 @@ public class SwingWindow extends JPanel implements Runnable{
 
     @Override
     public void run() {
-
-        while (game != null)
+        while (game != null && playing)
         {
             repaint();
             try {
                 game.sleep(10);
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
+            }
+            if(collison.collided())
+            {
+                playing = false;
             }
         }
     }

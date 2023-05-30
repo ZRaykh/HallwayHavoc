@@ -22,7 +22,7 @@ public class KeyDetector implements KeyListener {
         {
             jump = true;
             ScheduledExecutorService executorService = Executors.newSingleThreadScheduledExecutor();
-            executorService.schedule(KeyDetector::unJump, 350, TimeUnit.MILLISECONDS);
+            executorService.schedule(KeyDetector::unJump, 500, TimeUnit.MILLISECONDS);
         }
     }
 

@@ -11,6 +11,8 @@ public class ObstacleEntity {
     private int y;
     private int w;
     private int h;
+    private Rectangle hitbox;
+
     private ScreenStats screen;
     private BufferedImage spriteA;
     private BufferedImage spriteB;
@@ -22,9 +24,10 @@ public class ObstacleEntity {
     {
         screen = new ScreenStats();
         x = 9999;
-        y = 800;
-        w = 50;
-        h = 50;
+        y = 650;
+        w = 100;
+        h = 100;
+        hitbox = new Rectangle(x, y, w, h);
         SHIFTDIST = shift;
         active = false;
         try {
@@ -59,6 +62,7 @@ public class ObstacleEntity {
             currentSprite = spriteD;
         }
         x = screen.getWIDTH() + spacing;
+        hitbox.setLocation(x, y);
     }
 
     public void toggleInactive()
@@ -68,6 +72,7 @@ public class ObstacleEntity {
     }
     public void drawObstacle(Graphics g)
     {
+        hitbox.setLocation(x - SHIFTDIST, y);
         g.drawImage(currentSprite, x, y, w, h, null);
         x -= SHIFTDIST;
     }
@@ -76,11 +81,23 @@ public class ObstacleEntity {
         return x;
     }
 
+    public int getY() {
+        return y;
+    }
+
+    public int getH() {
+        return h;
+    }
+
     public int getW() {
         return w;
     }
 
     public boolean isActive() {
         return active;
+    }
+
+    public Rectangle getHitbox() {
+        return hitbox;
     }
 }

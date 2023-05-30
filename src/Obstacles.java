@@ -18,11 +18,15 @@ public class Obstacles {
         entities[4] = new ObstacleEntity(shift);
     }
 
+    public ObstacleEntity[] getEntities() {
+        return entities;
+    }
+
     public void entityDrawer(Graphics g)
     {
         for (int i = 0; i < entities.length; i++)
         {
-            spacing = 250 + ((int) (Math.random() * 10) * 150);
+            spacing = 500 + ((int) (Math.random() * 10) * 1000);
             if (entities[i].getX() <= -entities[i].getW())
             {
                 entities[i].toggleInactive();
