@@ -19,10 +19,10 @@ public class Background
     {
         screen = new ScreenStats();
         pos1 = 0;
-        posY = -24;
+        posY = -23;
         SHIFTFDIST = shift;
         try {
-            backGroundA = ImageIO.read(new File("Sprites/backgroundRemade.png"));
+            backGroundA = ImageIO.read(new File("Sprites/gameBackground.png"));
 
         } catch (IOException e) {
             throw new RuntimeException(e);
