@@ -12,17 +12,17 @@ public class Background
     private BufferedImage backGroundA;
 
     private int pos1;
-    private int frontY;
+    private int posY;
 
 
     public Background(int shift)
     {
         screen = new ScreenStats();
         pos1 = 0;
-        frontY = screen.getLENGTH()- screen.getLENGTH()/4;
+        posY = -24;
         SHIFTFDIST = shift;
         try {
-            backGroundA = ImageIO.read(new File("Sprites/BackgroundTestNew.png"));
+            backGroundA = ImageIO.read(new File("Sprites/backgroundRemade.png"));
 
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -35,10 +35,10 @@ public class Background
         int pos2 = pos1 + screen.getWIDTH()/3;
         int pos3 = pos2 + screen.getWIDTH()/3;
         int pos4 = pos3 + screen.getWIDTH()/3;
-        g.drawImage(backGroundA, pos1, frontY, screen.getWIDTH()/3, 400, null);
-        g.drawImage(backGroundA, pos2, frontY, screen.getWIDTH()/3, 400, null);
-        g.drawImage(backGroundA, pos3, frontY, screen.getWIDTH()/3, 400, null);
-        g.drawImage(backGroundA, pos4, frontY, screen.getWIDTH()/3, 400, null);
+        g.drawImage(backGroundA, pos1, posY, screen.getWIDTH()/3, screen.getLENGTH(), null);
+        g.drawImage(backGroundA, pos2, posY, screen.getWIDTH()/3, screen.getLENGTH(), null);
+        g.drawImage(backGroundA, pos3, posY, screen.getWIDTH()/3, screen.getLENGTH(), null);
+        g.drawImage(backGroundA, pos4, posY, screen.getWIDTH()/3, screen.getLENGTH(), null);
         pos1 -= SHIFTFDIST;
         if(pos1 <= -screen.getWIDTH()/3)
         {
