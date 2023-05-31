@@ -56,6 +56,11 @@ public class SwingWindow extends JPanel implements Runnable{
             try {
                 game.sleep(10);
                 timeSurvived += 0.01;
+                if (timeSurvived % (int) timeSurvived > 0.6)
+                {
+                    timeSurvived -= 0.6;
+                    timeSurvived ++;
+                }
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
