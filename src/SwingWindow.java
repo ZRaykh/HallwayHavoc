@@ -1,5 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
+import java.io.File;
+import java.text.DecimalFormat;
 
 public class SwingWindow extends JPanel implements Runnable{
     private JPanel mainPanel;
@@ -9,6 +11,9 @@ public class SwingWindow extends JPanel implements Runnable{
     private Obstacles obstacles;
     private Collisons collison;
     private ScreenStats screen;
+    private double timeSurvived;
+    private DecimalFormat df;
+    private Font timerFont;
     private Thread game;
     private boolean playing;
 
@@ -22,6 +27,13 @@ public class SwingWindow extends JPanel implements Runnable{
         background = new Background(ShiftDist);
         obstacles = new Obstacles(ShiftDist);
         collison = new Collisons(player, obstacles);
+        timeSurvived = 0;
+        df = new DecimalFormat("0.00");
+        try {
+            timerFont = Font.createFont(Font.TRUETYPE_FONT, new File("Sprites/pixelFont.TTF")).deriveFont(50f);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
         playing = true;
         this.setFocusable(true);
         this.setPreferredSize(new Dimension(screen.getWIDTH(), screen.getLENGTH()));
@@ -41,6 +53,7 @@ public class SwingWindow extends JPanel implements Runnable{
             repaint();
             try {
                 game.sleep(10);
+                timeSurvived += 0.01;
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
@@ -56,9 +69,12 @@ public class SwingWindow extends JPanel implements Runnable{
     {
         super.paint(g);
         Graphics2D graphic = (Graphics2D)g;
+        Graphics2D text = (Graphics2D) g;
         background.drawBackground(graphic);
         player.draw(graphic);
         obstacles.entityDrawer(graphic);
+        text.setColor(Color.white);
+        text.setFont(timerFont);
+        text.drawString("Seconds Survived: " + df.format(timeSurvived), 75, 100);
     }
-
 }
