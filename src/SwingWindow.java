@@ -14,6 +14,7 @@ public class SwingWindow extends JPanel implements Runnable{
     private double timeSurvived;
     private DecimalFormat df;
     private Font timerFont;
+    private Scores scores;
     private Thread game;
     private boolean playing;
 
@@ -35,6 +36,7 @@ public class SwingWindow extends JPanel implements Runnable{
             throw new RuntimeException(e);
         }
         playing = true;
+        scores = new Scores();
         this.setFocusable(true);
         this.setPreferredSize(new Dimension(screen.getWIDTH(), screen.getLENGTH()));
         this.setDoubleBuffered(true);
@@ -60,6 +62,9 @@ public class SwingWindow extends JPanel implements Runnable{
             if(collison.collided())
             {
                 playing = false;
+                scores.addScore(timeSurvived + "");
+                scores.closeWriter();
+                repaint();
             }
         }
     }
@@ -76,5 +81,6 @@ public class SwingWindow extends JPanel implements Runnable{
         text.setColor(Color.white);
         text.setFont(timerFont);
         text.drawString("Seconds Survived: " + df.format(timeSurvived), 75, 100);
+        text.drawString("High Score: " + df.format(scores.getGreatestScore()), 1000, 100);
     }
 }
