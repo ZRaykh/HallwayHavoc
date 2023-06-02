@@ -22,7 +22,7 @@ public class Background
         posY = -23;
         SHIFTFDIST = shift;
         try {
-            backGroundA = ImageIO.read(new File("Sprites/retry.png"));
+            backGroundA = ImageIO.read(new File("Sprites/GameBackground.png"));
 
         } catch (IOException e) {
             throw new RuntimeException(e);

@@ -13,37 +13,54 @@ public class Player{
     private int w;
     private Rectangle hitbox;
     private KeyDetector input;
-    private BufferedImage sprite;
+    private BufferedImage playerJump;
+    private BufferedImage playerRun1;
+    private BufferedImage playerRun2;
+    private BufferedImage currentSprite;
+    private int swapCounter;
+
+
 
 
     public Player(KeyDetector in) {
         x = 800;
         y = 650;
-        h = 200;
-        w = 200;
+        h = 250;//350
+        w = 250;
         hitbox = new Rectangle(x, y, w, h);
         input = in;
+        swapCounter = 0;
         try {
-            sprite = ImageIO.read(new File("Sprites/Player.png"));
+            playerJump = ImageIO.read(new File("Sprites/PlayerJump.png")); //Sprites/PlayerRun.png
+            playerRun1 = ImageIO.read(new File("Sprites/PlayerRun1.png")); //Sprites/PlayerRun.png
+            playerRun2 = ImageIO.read(new File("Sprites/PlayerRun2.png")); //Sprites/PlayerRun.png
+            currentSprite = playerRun1;
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-    }
-
-    public BufferedImage getSprite() {
-        return sprite;
     }
 
     public void draw(Graphics g){
         if (input.isJump())
         {
             hitbox.setLocation(x, y - 300);
-            g.drawImage(sprite, x, y - 300, w, h, null);
+            g.drawImage(playerJump, x, y - 300, w, h, null);
         }
         else
         {
-            hitbox.setLocation(x, y);;
-            g.drawImage(sprite, x, y,w, h, null);
+            hitbox.setLocation(x, y);
+            g.drawImage(currentSprite, x, y,w, h, null);
+            swapCounter++;
+            if (swapCounter == 8)
+            {
+                if (currentSprite.equals(playerRun1))
+                {
+                    currentSprite = playerRun2;
+                }
+                else
+                    currentSprite = playerRun1;
+                swapCounter = 0;
+            }
         }
     }
 

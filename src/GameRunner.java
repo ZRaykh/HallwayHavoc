@@ -1,6 +1,10 @@
 import javax.swing.*;
 
 public class GameRunner extends JFrame {
+    public static void main(String[] args) {
+        GameRunner HallwayHavoc = new GameRunner();
+    }
+
     public GameRunner()
     {
         setResizable(false);
@@ -10,6 +14,7 @@ public class GameRunner extends JFrame {
         setLocationRelativeTo(null);
         setExtendedState(JFrame.MAXIMIZED_BOTH);
         setVisible(true);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
     }
 }
 
