@@ -9,7 +9,7 @@ public class SwingWindow extends JPanel implements Runnable{
     private Player player;
     private Background background;
     private Obstacles obstacles;
-    private Collisons collison;
+    private Collisions collison;
     private ScreenStats screen;
     private double timeSurvived;
     private DecimalFormat df;
@@ -27,7 +27,7 @@ public class SwingWindow extends JPanel implements Runnable{
         player = new Player(input);
         background = new Background(ShiftDist);
         obstacles = new Obstacles(ShiftDist);
-        collison = new Collisons(player, obstacles);
+        collison = new Collisions(player, obstacles);
         timeSurvived = 0;
         df = new DecimalFormat("0.00");
         try {

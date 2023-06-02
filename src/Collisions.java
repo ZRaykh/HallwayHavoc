@@ -1,10 +1,8 @@
-import java.awt.*;
-
-public class Collisons {
+public class Collisions {
     private Player player;
     private Obstacles obstacles;
 
-    public Collisons(Player p, Obstacles o)
+    public Collisions(Player p, Obstacles o)
     {
         player = p;
         obstacles = o;
