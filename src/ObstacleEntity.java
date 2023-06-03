@@ -25,16 +25,15 @@ public class ObstacleEntity {
         screen = new ScreenStats();
         x = 9999;
         y = 650;
-        w = 100;
-        h = 100;
-        hitbox = new Rectangle(x, y, w, h);
+        w = 150;
+        h = 250;
+        hitbox = new Rectangle(x, y, w - 10, h - 10);
         SHIFTDIST = shift;
         active = false;
         try {
-            spriteA = ImageIO.read(new File("Sprites/Green.png"));
-            spriteB = ImageIO.read(new File("Sprites/Orange.jpg"));
-            spriteC = ImageIO.read(new File("Sprites/Purple.jpg"));
-            spriteD = ImageIO.read(new File("Sprites/Red.png"));
+            spriteA = ImageIO.read(new File("Sprites/Obstacle1.png"));
+            spriteB = ImageIO.read(new File("Sprites/Obstacle2.png"));
+            spriteC = ImageIO.read(new File("Sprites/Obstacle3.png"));
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -44,7 +43,7 @@ public class ObstacleEntity {
     public void toggleActive(int spacing)
     {
         active = true;
-        int spriteVer = (int) (Math.random() * 4);
+        int spriteVer = (int) (Math.random() * 3);
         if (spriteVer == 0)
         {
             currentSprite = spriteA;
@@ -56,10 +55,6 @@ public class ObstacleEntity {
         if (spriteVer == 2)
         {
             currentSprite = spriteC;
-        }
-        if (spriteVer == 3)
-        {
-            currentSprite = spriteD;
         }
         x = screen.getWIDTH() + spacing;
         hitbox.setLocation(x, y);

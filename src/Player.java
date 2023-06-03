@@ -25,15 +25,15 @@ public class Player{
     public Player(KeyDetector in) {
         x = 800;
         y = 650;
-        h = 250;//350
+        h = 250;
         w = 250;
         hitbox = new Rectangle(x, y, w, h);
         input = in;
         swapCounter = 0;
         try {
-            playerJump = ImageIO.read(new File("Sprites/PlayerJump.png")); //Sprites/PlayerRun.png
-            playerRun1 = ImageIO.read(new File("Sprites/PlayerRun1.png")); //Sprites/PlayerRun.png
-            playerRun2 = ImageIO.read(new File("Sprites/PlayerRun2.png")); //Sprites/PlayerRun.png
+            playerJump = ImageIO.read(new File("Sprites/PlayerRun.png")); //Sprites/PlayerRun.png
+            playerRun1 = ImageIO.read(new File("Sprites/PlayerRun.png")); //Sprites/PlayerRun.png
+            playerRun2 = ImageIO.read(new File("Sprites/PlayerRun.png")); //Sprites/PlayerRun.png
             currentSprite = playerRun1;
         } catch (IOException e) {
             throw new RuntimeException(e);
