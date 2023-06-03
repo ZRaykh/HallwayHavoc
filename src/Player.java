@@ -31,9 +31,9 @@ public class Player{
         input = in;
         swapCounter = 0;
         try {
-            playerJump = ImageIO.read(new File("Sprites/PlayerRun.png")); //Sprites/PlayerRun.png
-            playerRun1 = ImageIO.read(new File("Sprites/PlayerRun.png")); //Sprites/PlayerRun.png
-            playerRun2 = ImageIO.read(new File("Sprites/PlayerRun.png")); //Sprites/PlayerRun.png
+            playerJump = ImageIO.read(new File("Sprites/PlayerJump.png"));
+            playerRun1 = ImageIO.read(new File("Sprites/PlayerRunA.png"));
+            playerRun2 = ImageIO.read(new File("Sprites/PlayerRunB.png"));
             currentSprite = playerRun1;
         } catch (IOException e) {
             throw new RuntimeException(e);
