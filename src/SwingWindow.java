@@ -86,6 +86,6 @@ public class SwingWindow extends JPanel implements Runnable{
         text.setColor(Color.white);
         text.setFont(timerFont);
         text.drawString("Seconds Survived: " + df.format(timeSurvived), 75, 100);
-        text.drawString("High Score: " + df.format(scores.getGreatestScore()), 1000, 100);
+        text.drawString("High Score: " + df.format(scores.getGreatestScore()), 1000, 100);//
     }
 }

@@ -8,7 +8,7 @@ public class ScreenStats {
     {
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         WIDTH = screenSize.width;
-        LENGTH = screenSize.height;
+        LENGTH = screenSize.height;//
     }
 
     public int getLENGTH() {

@@ -7,11 +7,11 @@ import java.io.IOException;
 
 public class Background
 {
-    private final int SHIFTFDIST;
+    private final int SHIFTFDIST;//
     private ScreenStats screen;
     private BufferedImage backGroundA;
 
-    private int posX;
+    private int posX; //
     private int posY;
 
 
