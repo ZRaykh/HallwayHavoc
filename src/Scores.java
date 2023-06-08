@@ -53,6 +53,7 @@ public class Scores {
         }
         return greatest;
     }
+
     public void closeWriter()
     {
         try {

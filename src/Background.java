@@ -10,10 +10,8 @@ public class Background
     private final int SHIFTFDIST;
     private ScreenStats screen;
     private BufferedImage backGroundA;
-
     private int posX;
     private int posY;
-
 
     public Background(int shift)
     {

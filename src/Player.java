@@ -19,9 +19,6 @@ public class Player{
     private BufferedImage currentSprite;
     private int swapCounter;
 
-
-
-
     public Player(KeyDetector in) {
         x = 800;
         y = 650;
@@ -63,6 +60,7 @@ public class Player{
             }
         }
     }
+
     public Rectangle getHitbox() {
         return hitbox;
     }

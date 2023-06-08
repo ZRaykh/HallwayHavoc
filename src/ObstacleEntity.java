@@ -12,7 +12,6 @@ public class ObstacleEntity {
     private int width;
     private int height;
     private Rectangle hitbox;
-
     private ScreenStats screen;
     private BufferedImage spriteA;
     private BufferedImage spriteB;
@@ -64,6 +63,7 @@ public class ObstacleEntity {
         active = false;
         xPos = 9999;
     }
+
     public void drawObstacle(Graphics g)
     {
         hitbox.setLocation(xPos - SHIFTDIST, yPos);

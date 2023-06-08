@@ -37,5 +37,4 @@ public class KeyDetector implements KeyListener {
     public static void unJump() {
         jump = false;
     }
-
 }
