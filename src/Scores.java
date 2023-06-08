@@ -54,7 +54,7 @@ public class Scores {
         return greatest;
     }
     public void closeWriter()
-    {//
+    {
         try {
             writer.close();
         } catch (IOException e) {

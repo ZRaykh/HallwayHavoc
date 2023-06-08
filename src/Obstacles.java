@@ -15,7 +15,7 @@ public class Obstacles {
         entities[1] = new ObstacleEntity(shift);
         entities[2] = new ObstacleEntity(shift);
         entities[3] = new ObstacleEntity(shift);
-        entities[4] = new ObstacleEntity(shift);//
+        entities[4] = new ObstacleEntity(shift);
     }
 
     public ObstacleEntity[] getEntities() {

@@ -1,5 +1,5 @@
 public class Collisions {
-    private Player player;//
+    private Player player;
     private Obstacles obstacles;
 
     public Collisions(Player p, Obstacles o)

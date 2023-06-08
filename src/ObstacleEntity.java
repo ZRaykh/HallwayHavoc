@@ -27,7 +27,7 @@ public class ObstacleEntity {
         width = 150;
         height = 250;
         hitbox = new Rectangle(xPos, yPos, width - 10, height - 10);
-        SHIFTDIST = shift;//
+        SHIFTDIST = shift;
         active = false;
         try {
             spriteA = ImageIO.read(new File("Sprites/Obstacle1.png"));

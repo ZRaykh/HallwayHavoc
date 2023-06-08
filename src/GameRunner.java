@@ -7,7 +7,7 @@ public class GameRunner extends JFrame {
 
     public GameRunner()
     {
-        setResizable(false);//
+        setResizable(false);
         SwingWindow game = new SwingWindow();
         add(game);
         pack();
