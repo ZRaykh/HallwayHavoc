@@ -7,27 +7,26 @@ import java.io.IOException;
 public class ObstacleEntity {
     private final int SHIFTDIST;
     private boolean active;
-    private int x;
-    private int y;
-    private int w;
-    private int h;
+    private int xPos;
+    private int yPos;
+    private int width;
+    private int height;
     private Rectangle hitbox;
 
     private ScreenStats screen;
     private BufferedImage spriteA;
     private BufferedImage spriteB;
     private BufferedImage spriteC;
-    private BufferedImage spriteD;
     private BufferedImage currentSprite;
 
     public ObstacleEntity(int shift)
     {
         screen = new ScreenStats();
-        x = 9999;
-        y = 650;
-        w = 150;
-        h = 250;
-        hitbox = new Rectangle(x, y, w - 10, h - 10);
+        xPos = 9999;
+        yPos = 650;
+        width = 150;
+        height = 250;
+        hitbox = new Rectangle(xPos, yPos, width - 10, height - 10);
         SHIFTDIST = shift;
         active = false;
         try {
@@ -56,36 +55,28 @@ public class ObstacleEntity {
         {
             currentSprite = spriteC;
         }
-        x = screen.getWIDTH() + spacing;
-        hitbox.setLocation(x, y);
+        xPos = screen.getWIDTH() + spacing;
+        hitbox.setLocation(xPos, yPos);
     }
 
     public void toggleInactive()
     {
         active = false;
-        x = 9999;
+        xPos = 9999;
     }
     public void drawObstacle(Graphics g)
     {
-        hitbox.setLocation(x - SHIFTDIST, y);
-        g.drawImage(currentSprite, x, y, w, h, null);
-        x -= SHIFTDIST;
+        hitbox.setLocation(xPos - SHIFTDIST, yPos);
+        g.drawImage(currentSprite, xPos, yPos, width, height, null);
+        xPos -= SHIFTDIST;
     }
 
     public int getX() {
-        return x;
+        return xPos;
     }
 
-    public int getY() {
-        return y;
-    }
-
-    public int getH() {
-        return h;
-    }
-
-    public int getW() {
-        return w;
+    public int getWidth() {
+        return width;
     }
 
     public boolean isActive() {

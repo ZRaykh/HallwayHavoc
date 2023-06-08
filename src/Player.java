@@ -63,23 +63,6 @@ public class Player{
             }
         }
     }
-
-    public int getX() {
-        return x;
-    }
-
-    public int getY() {
-        return y;
-    }
-
-    public int getH() {
-        return h;
-    }
-
-    public int getW() {
-        return w;
-    }
-
     public Rectangle getHitbox() {
         return hitbox;
     }
